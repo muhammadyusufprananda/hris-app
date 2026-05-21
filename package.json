@@ -4,11 +4,12 @@
   "description": "HR Management System",
   "main": "electron.js",
   "scripts": {
-  "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && .\\\\node_modules\\\\.bin\\\\electron .\"",
-  "react-start": "react-scripts start",
-  "build": "react-scripts build",
-  "pack": "npm run build && electron-builder"
-},
+    "postinstall": "node -e \"require('fs').writeFileSync('node_modules/electron/path.txt', 'electron.exe')\"",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && .\\\\node_modules\\\\.bin\\\\electron .\"",
+    "react-start": "react-scripts start",
+    "build": "react-scripts build",
+    "pack": "npm run build && electron-builder"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,20 +18,35 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
-    "electron": "^29.1.0",
+    "electron": "^29.4.6",
     "electron-builder": "^24.9.1",
     "wait-on": "^7.2.0"
   },
   "build": {
     "appId": "com.hris.app",
     "productName": "HRIS Management",
-    "files": ["build/**/*", "electron.js", "preload.js", "node_modules/**/*"],
-    "win": { "target": "nsis" },
-    "mac": { "target": "dmg" },
-    "linux": { "target": "AppImage" }
+    "files": [
+      "build/**/*",
+      "electron.js",
+      "preload.js",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
   },
   "browserslist": {
-    "production": [">0.2%"],
-    "development": ["last 1 chrome version"]
+    "production": [
+      ">0.2%"
+    ],
+    "development": [
+      "last 1 chrome version"
+    ]
   }
 }

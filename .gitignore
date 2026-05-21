@@ -1,4 +1,22 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 build/
+
+# Cache
 .cache/
+.eslintcache
+
+# Data & logs (jangan commit data lokal)
+hris-data.json
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
